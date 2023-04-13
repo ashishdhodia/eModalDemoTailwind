@@ -1,0 +1,138 @@
+<!-- Side nav -->
+<mat-sidenav-container autosize fullscreen>
+  <mat-sidenav #sidenav mode="over">
+    <mat-nav-list>
+      <a mat-list-item>Link Template</a>
+      <a mat-list-item>Link Template</a>
+      <a mat-list-item>Link Template</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+    <!-- Appbar -->
+    <div class="flex flex-row items-center justify-between h-12 text-neutral-500">
+      <!-- Appbar left -->
+      <div class="flex flex-row items-center gap-x-3">
+        <!-- Menu -->
+        <button class="flex items-center justify-center h-12 w-12 bg-neutral-700" (click)="sidenav.toggle()">
+          <mat-icon class="text-white">menu</mat-icon>
+        </button>
+
+        <!-- Logo -->
+        <img src="../../assets/eModal-Logo.svg" alt="eModal Logo" />
+
+        <!-- Title -->
+        <p class="text-xl">eModal Community Portal</p>
+      </div>
+
+      <!-- Appbar right -->
+      <!-- Appbar Icons -->
+      <div class="flex flex-row items-center h-full">
+        <div class="flex items-center justify-center border-neutral-300 h-full px-3 border-l">
+          <mat-icon>shopping_cart</mat-icon>
+        </div>
+        <div class="flex items-center justify-center border-neutral-300 h-full px-3 border-l">
+          <mat-icon>notifications</mat-icon>
+        </div>
+        <div class="flex items-center justify-center border-neutral-300 h-full px-3 border-l">
+          <mat-icon>settings</mat-icon>
+        </div>
+        <div class="flex items-center justify-center border-neutral-300 h-full px-3 border-l">
+          <mat-icon>help</mat-icon>
+        </div>
+        <div class="flex items-center justify-center h-full px-3 border-l">
+          <mat-icon>person</mat-icon>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actionsbar -->
+    <div class="flex flex-row items-center justify-between h-14 pl-3 py-2 text-neutral-500 border-y border-neutral-500">
+      <!-- Actionsbar left -->
+      <div class="flex flex-row items-center h-full">
+        <div class="flex flex-row items-center gap-x-4">
+          <div class="w-60 h-6">
+            <p class="text-base">Containers</p>
+          </div>
+
+          <!-- Actions menu -->
+          <div class="justify-between rounded">
+            <button mat-raised-button [matMenuTriggerFor]="menuAction" class="p-2">
+              <div class="flex just items-center">
+                Actions <mat-icon>arrow_drop_down</mat-icon>
+              </div>
+            </button>
+            <mat-menu #menuAction="matMenu">
+              <button mat-menu-item class="pl-3">Action 1</button>
+              <button mat-menu-item class="pl-3">Action 2</button>
+              <button mat-menu-item class="pl-3">Action 3</button>
+              <button mat-menu-item class="pl-3">Action 4</button>
+            </mat-menu>
+          </div>
+
+          <button mat-raised-button class="p-2" (click)="openDialog()">Add to my Containers</button>
+
+          <button mat-raised-button>
+            <div class="flex justify-center items-center">
+              <mat-icon class="text-neutral-500">file_open</mat-icon>
+            </div>
+          </button>
+
+          <!-- Button Group -->
+          <div class="flex flex-row justify-start border border-neutral-300 rounded-md">
+            <!-- Button -->
+            <button class="flex rounded-l items-center justify-center h-9 w-9">
+              <mat-icon>email</mat-icon>
+            </button>
+            <!-- Button -->
+            <button class="flex border-x border-neutral-300 items-center justify-center h-9 w-9">
+              <mat-icon class="text-neutral-500">picture_as_pdf</mat-icon>
+            </button>
+            <!-- Button -->
+            <button class="flex rounded-r items-center justify-center h-9 w-9">
+              <mat-icon class="text-green-500"> insert_drive_file</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actionsbar right -->
+      <div class="flex flex-row items-center justify-center">
+        <div class="flex pr-3">
+          <!-- Button Group -->
+          <div class="flex flex-row justify-start border border-neutral-300 rounded-md shadow-lg">
+            <!-- Button -->
+            <button class="flex items-center justify-center h-9 w-9 rounded-l">
+              <mat-icon>refresh</mat-icon>
+            </button>
+            <!-- Button -->
+            <button class="flex items-center justify-center h-9 w-9 border-x border-neutral-300">
+              <mat-icon class="text-neutral-500">filter_alt</mat-icon>
+            </button>
+            <!-- Button -->
+            <div class="flex justify-between rounded">
+              <button mat-button [matMenuTriggerFor]="menuSavedViews" class="p-2">
+                <div class="flex items-center justify-center">
+                  <p class="pr-7">Saved Views</p>
+                  <mat-icon>arrow_drop_down</mat-icon>
+                </div>
+              </button>
+              <mat-menu #menuSavedViews="matMenu" class="w-40 mt-2">
+                <button mat-menu-item class="pl-3">View 1</button>
+                <button mat-menu-item class="pl-3">View 2</button>
+                <button mat-menu-item class="pl-3">View 3</button>
+                <button mat-menu-item class="pl-3">View 4</button>
+              </mat-menu>
+            </div>
+            <!-- Button -->
+            <button class="flex items-center justify-center h-9 w-9 rounded-r border-l border-neutral-300">
+              <mat-icon class="text-neutral-500"> save</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <app-container-table></app-container-table>
+
+  </mat-sidenav-content>

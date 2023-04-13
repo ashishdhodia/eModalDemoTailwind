@@ -1,0 +1,52 @@
+<div class="flex flex-row items-center justify-between h-12 text-neutral-500 bg-white drop-shadow m-3">
+    <div class="flex flex-row items-center gap-x-3">
+        <button class="flex bg-neutral-700 h-12 w-12 justify-center items-center">
+            <mat-icon class="text-white">menu</mat-icon>
+        </button>
+        <img src="../../assets/eModal-Logo.svg" alt="eModal Logo" />
+        <p class="text-xl">eModal Community Portal</p>
+    </div>
+    <div class="flex flex-row items-center h-full">
+        <div class="flex items-center justify-center h-full border-l border-neutral-300 px-3">
+            <mat-icon aria-hidden="false" aria-label="shopping cart icon">shopping_cart</mat-icon>
+        </div>
+        <div class="flex items-center justify-center h-full border-l border-neutral-300 px-3">
+            <mat-icon aria-hidden="false" aria-label="notifications icon">notifications</mat-icon>
+        </div>
+        <div class="flex items-center justify-center h-full border-l border-neutral-300 px-3">
+            <mat-icon aria-hidden="false" aria-label="settings icon">settings</mat-icon>
+        </div>
+        <div class="flex items-center justify-center h-full border-l border-neutral-300 px-3">
+            <mat-icon aria-hidden="false" aria-label="help icon">help</mat-icon>
+        </div>
+        <div class="flex items-center justify-center px-3 h-full border-l">
+            <mat-icon aria-hidden="false" aria-label="User account icon">person</mat-icon>
+        </div>
+    </div>
+</div>
+
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" class="p-3 rounded bg-neutral-200">
+    <mat-tab label="HTML">
+        <div class="flex justify-end m-3">
+            <button mat-raised-button [cdkCopyToClipboard]="code" color="primary">
+                <div class="flex justify-center items-center">
+                    <mat-icon>content_copy</mat-icon>
+                </div>
+            </button>
+        </div>
+        <mat-accordion class="example-headers-align" multi>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title> HTML </mat-panel-title>
+                    <mat-panel-description>
+                        <code>{{ codeSnippet }}</code>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <pre>
+                    <code>{{code}}</code>
+                </pre>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-tab>
+    <mat-tab label="TS"> Content </mat-tab>
+</mat-tab-group>

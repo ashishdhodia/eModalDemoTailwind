@@ -1,0 +1,182 @@
+<div class="overflow-scroll overflow-y-hidden max-w-full w-auto h-full">
+  <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef class="!bg-neutral-200">
+        <mat-checkbox (change)="$event ? toggleAllRows() : null" [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+          [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+    <!-- Position Column -->
+    <ng-container matColumnDef="Container">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Container"
+        class="!bg-neutral-200">
+        Container #
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.Container }}</td>
+    </ng-container>
+
+    <!-- TradeType Column -->
+    <ng-container matColumnDef="TradeType">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by TradeType"
+        class="!bg-neutral-200">
+        TradeType
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.TradeType }}</td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="Status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Status"
+        class="!bg-neutral-200">
+        Status
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.Status }}</td>
+    </ng-container>
+
+    <!-- Holds Column -->
+    <ng-container matColumnDef="Holds">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Holds"
+        class="!bg-neutral-200">
+        Holds
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.Holds }}</td>
+    </ng-container>
+
+    <!-- PregateTicket Column -->
+    <ng-container matColumnDef="PregateTicket">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by PregateTicket"
+        class="!bg-neutral-200">
+        PregateTicket
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.PregateTicket }}</td>
+    </ng-container>
+    <!-- EmodalPregateStatus Column -->
+    <ng-container matColumnDef="EmodalPregateStatus">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by EmodalPregateStatus"
+        class="!bg-neutral-200">
+        EmodalPregateStatus
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.EmodalPregateStatus }}
+      </td>
+    </ng-container>
+
+    <!-- GateStatus Column -->
+    <ng-container matColumnDef="GateStatus">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by GateStatus"
+        class="!bg-neutral-200">
+        GateStatus
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.GateStatus }}</td>
+    </ng-container>
+
+    <!-- Origin Column -->
+    <ng-container matColumnDef="Origin">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Origin"
+        class="!bg-neutral-200">
+        Origin
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.Origin }}</td>
+    </ng-container>
+
+    <!-- Destination Column -->
+    <ng-container matColumnDef="Destination">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Destination"
+        class="!bg-neutral-200">
+        Destination
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.Destination }}</td>
+    </ng-container>
+
+    <!-- CurrentLoc Column -->
+    <ng-container matColumnDef="CurrentLoc">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by CurrentLoc"
+        class="!bg-neutral-200">
+        CurrentLoc
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.CurrentLoc }}</td>
+    </ng-container>
+
+    <!-- Line Column -->
+    <ng-container matColumnDef="Line">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Line"
+        class="!bg-neutral-200">
+        Line
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.Line }}</td>
+    </ng-container>
+
+    <!-- VesselName Column -->
+    <ng-container matColumnDef="VesselName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by VesselName"
+        class="!bg-neutral-200">
+        VesselName
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.VesselName }}</td>
+    </ng-container>
+
+    <!-- VesselCode Column -->
+    <ng-container matColumnDef="VesselCode">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by VesselCode"
+        class="!bg-neutral-200">
+        VesselCode
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.VesselCode }}</td>
+    </ng-container>
+
+    <!-- Voyage Column -->
+    <ng-container matColumnDef="Voyage">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Voyage"
+        class="!bg-neutral-200">
+        Voyage
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.Voyage }}</td>
+    </ng-container>
+
+    <!-- SizeType Column -->
+    <ng-container matColumnDef="SizeType">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by SizeType"
+        class="!bg-neutral-200">
+        SizeType
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.SizeType }}</td>
+    </ng-container>
+
+    <!-- Fees Column -->
+    <ng-container matColumnDef="Fees">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Fees"
+        class="!bg-neutral-200">
+        Fees
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.Fees }}</td>
+    </ng-container>
+
+    <!-- LFDGTD Column -->
+    <ng-container matColumnDef="LFDGTD">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by LFDGTD"
+        class="!bg-neutral-200">
+        LFDGTD
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.LFDGTD }}</td>
+    </ng-container>
+
+    <!-- Tags Column -->
+    <ng-container matColumnDef="Tags">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Tags"
+        class="!bg-neutral-200">
+        Tags
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.Tags }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="selection.toggle(row)"></tr>
+  </table>
+</div>

@@ -1,0 +1,13 @@
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #sidenav mode="side" opened [fixedInViewport]="options.value.fixed" [fixedTopGap]="options.value.top"
+        [fixedBottomGap]="options.value.bottom" class="w-60">
+        <mat-nav-list>
+            <a mat-list-item (click)="toggleLibAppbar()">App Bar</a>
+            <a mat-list-item (click)="toggleLibActionsbar()">Actions Bar</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-copycodelib-appbar *ngIf="appbar"></app-copycodelib-appbar>
+        <app-copycodelib-actionsbar *ngIf="actionsbar"></app-copycodelib-actionsbar>
+    </mat-sidenav-content>
+</mat-sidenav-container>

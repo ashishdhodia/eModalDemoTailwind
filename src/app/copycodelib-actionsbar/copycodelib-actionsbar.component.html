@@ -1,0 +1,112 @@
+<!-- Actionsbar -->
+<div class="flex flex-row items-center justify-between h-14 pl-3 py-2 text-neutral-500 border-y border-neutral-500 m-3">
+    <!-- Actionsbar left -->
+    <div class="flex flex-row items-center h-full">
+        <div class="flex flex-row items-center gap-x-4">
+            <div class="w-60 h-6">
+                <p class="text-base">Containers</p>
+            </div>
+
+            <!-- Actions menu -->
+            <div class="justify-between rounded">
+                <button mat-raised-button [matMenuTriggerFor]="menuAction" class="p-2">
+                    <div class="flex just items-center">
+                        Actions <mat-icon>arrow_drop_down</mat-icon>
+                    </div>
+                </button>
+                <mat-menu #menuAction="matMenu">
+                    <button mat-menu-item class="pl-3">Action 1</button>
+                    <button mat-menu-item class="pl-3">Action 2</button>
+                    <button mat-menu-item class="pl-3">Action 3</button>
+                    <button mat-menu-item class="pl-3">Action 4</button>
+                </mat-menu>
+            </div>
+
+            <button mat-raised-button class="p-2">Add to my Containers</button>
+
+            <button mat-raised-button>
+                <div class="flex justify-center items-center">
+                    <mat-icon class="text-neutral-500">file_open</mat-icon>
+                </div>
+            </button>
+
+            <!-- Button Group -->
+            <div class="flex flex-row justify-start border border-neutral-300 rounded-md">
+                <!-- Button -->
+                <button class="flex rounded-l items-center justify-center h-9 w-9">
+                    <mat-icon>email</mat-icon>
+                </button>
+                <!-- Button -->
+                <button class="flex border-x border-neutral-300 items-center justify-center h-9 w-9">
+                    <mat-icon class="text-neutral-500">picture_as_pdf</mat-icon>
+                </button>
+                <!-- Button -->
+                <button class="flex rounded-r items-center justify-center h-9 w-9">
+                    <mat-icon class="text-green-500"> insert_drive_file</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Actionsbar right -->
+    <div class="flex flex-row items-center justify-center">
+        <div class="flex pr-3">
+            <!-- Button Group -->
+            <div class="flex flex-row justify-start border border-neutral-300 rounded-md shadow-lg">
+                <!-- Button -->
+                <button class="flex items-center justify-center h-9 w-9 rounded-l">
+                    <mat-icon>refresh</mat-icon>
+                </button>
+                <!-- Button -->
+                <button class="flex items-center justify-center h-9 w-9 border-x border-neutral-300">
+                    <mat-icon class="text-neutral-500">filter_alt</mat-icon>
+                </button>
+                <!-- Button -->
+                <div class="flex justify-between rounded">
+                    <button mat-button [matMenuTriggerFor]="menuSavedViews" class="p-2">
+                        <div class="flex items-center justify-center">
+                            <p class="pr-7">Saved Views</p>
+                            <mat-icon>arrow_drop_down</mat-icon>
+                        </div>
+                    </button>
+                    <mat-menu #menuSavedViews="matMenu" class="w-40 mt-2">
+                        <button mat-menu-item class="pl-3">View 1</button>
+                        <button mat-menu-item class="pl-3">View 2</button>
+                        <button mat-menu-item class="pl-3">View 3</button>
+                        <button mat-menu-item class="pl-3">View 4</button>
+                    </mat-menu>
+                </div>
+                <!-- Button -->
+                <button class="flex items-center justify-center h-9 w-9 rounded-r border-l border-neutral-300">
+                    <mat-icon class="text-neutral-500"> save</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" class="p-3 rounded bg-neutral-200">
+    <mat-tab label="HTML">
+        <div class="flex justify-end m-3">
+            <button mat-raised-button [cdkCopyToClipboard]="code" color="primary">
+                <div class="flex justify-center items-center">
+                    <mat-icon>content_copy</mat-icon>
+                </div>
+            </button>
+        </div>
+        <mat-accordion class="example-headers-align" multi>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title> HTML </mat-panel-title>
+                    <mat-panel-description>
+                        <code>{{ codeSnippet }}</code>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <pre>
+                    <code>{{code}}</code>
+                </pre>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-tab>
+    <mat-tab label="TS"> Content </mat-tab>
+</mat-tab-group>
